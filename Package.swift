@@ -5,10 +5,11 @@ import PackageDescription
 let package = Package(
     name: "Moat",
     dependencies: [
-    ],
+        .package(url: "https://github.com/vapor/vapor.git", from: "3.0.0"),
+        ],
     targets: [
-        .target(
-            name: "Moat",
-            dependencies: []),
+        .target(name: "Moat", dependencies: ["Vapor"]),
+        .testTarget(name: "MoatTests", dependencies: ["Vapor", "Moat"])
     ]
+)
 )
