@@ -1,3 +1,8 @@
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/11927600/40880628-80b4a674-6682-11e8-994b-4bdcf01a257c.jpg" alt="Moat">
+    <br>
+    <br>
+
 # Moat
 A line of defense for your [Vapor](https://vapor.codes/) application including XSS attack filtering *\+ extras*. 
 
