@@ -12,4 +12,3 @@ let package = Package(
         .testTarget(name: "MoatTests", dependencies: ["Vapor", "Moat"])
     ]
 )
-)
