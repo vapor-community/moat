@@ -9,6 +9,5 @@ let package = Package(
         ],
     targets: [
         .target(name: "Moat", dependencies: ["Vapor"]),
-        .testTarget(name: "MoatTests", dependencies: ["Vapor", "Moat"])
     ]
 )
