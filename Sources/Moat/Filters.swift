@@ -1,5 +1,3 @@
-import Foundation
-
 public struct ProtanityFilter: Moat {
     public let filterArray = [
         "fudge", "flipping"

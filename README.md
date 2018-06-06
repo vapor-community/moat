@@ -1,13 +1,17 @@
 <p align="center">
     <img src="https://user-images.githubusercontent.com/11927600/40880628-80b4a674-6682-11e8-994b-4bdcf01a257c.jpg" alt="Moat">
     <br>
-    <br>
 
 # Moat
 A line of defense for your [Vapor](https://vapor.codes/) application including XSS attack filtering *\+ extras*. 
+  
 
 ## Why use it?
 Moat provides custom Leaf tags and string extensions to filter for src and href attribute XSS attacks, protecting unencoded HTML with esoteric XSS techniques, censoring profanity, and allowing for pure unchanged HTML.
+
+Moat should be used alongside other protections such as a strong Content Security Policy (CSP) policy. A CSP policy gives directives to the browser to what and from where certain resources can be loaded from the page containing the CSP header. Please see the  [brokenhandsio/VaporSecurityHeaders](https://github.com/brokenhandsio/VaporSecurityHeaders) library to add security headers to your Vapor application.  Additionally, you can check the strength of your CSP policy with Google's [CSP Evaluator](https://csp-evaluator.withgoogle.com). 
+
+For more information on Vapor application security please visit Broken Hands' [Security And Your Vapor Application](https://geeks.brokenhands.io/blog/posts/security-and-your-vapor-application/) article. 
 
 *Filters will be updated regularly to protect against the latest XSS attacks* 
 
@@ -16,7 +20,8 @@ Moat provides custom Leaf tags and string extensions to filter for src and href 
 Protects src or href attributes from XSS attacks. For example the payload `javascript:alert('Vapor')` or `data:text/html;base64,PHNjcmlwdD5hbGVydCgnVmFwb3InKTwvc2NyaXB0Pg==` are not escaped via templating engines or HTML encoding. These should be protected when embedded in src, href or data attributes (`<a href=“javascript:alert('Vapor')”>XSS</a>`). For example `javascript:alert(1)` becomes the non-exploitable `javascriptalert(1)`. 
 
 ### XSS
-Provides XSS protection to raw HTML strings whether via custom Leaf tag or strings. For example `<img src=x onerror="alert(1)">` becomes the safe `<img src=x ="alert(1)">`  *Note: Not all XSS attacks are mitigated as content is not HTML escaped.*
+Provides XSS protection to raw HTML strings whether via custom Leaf tag or strings. For example `<img src=x onerror="alert(1)">` becomes the safe `<img src=x ="alert(1)">`   
+*Note: Not all XSS attacks are mitigated as content is not HTML escaped.*
 
 ### Profanity
 Provides a customizable array to censor words or dictionary to replace words with alternatives. For example `fudge` into `*****` or `damn` into `dang`.  
@@ -40,7 +45,15 @@ Allows for raw unescaped, unfiltered and unprotected HTML to be passed to Leaf. 
 - Use the `#shrug(string)` in Leaf 
 
 ## Setup
-### Add to configure.swift
+#### Add Moat to your Package.swift
+```swift
+dependencies: [
+    ...,
+   .package(url: "https://github.com/vapor-community/moat.git", from: "0.0.5")
+]
+```
+
+#### Add to Leaf tags to your configure.swift
 ``` swift
     var tags = LeafTagConfig.default()
     tags.use(ProfanityTag(), as: "clean")

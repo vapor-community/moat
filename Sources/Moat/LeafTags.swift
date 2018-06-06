@@ -9,6 +9,7 @@ public final class ProfanityTag: TagRenderer {
             return .string(censored)
         }
     }
+    public init() {}
 }
 
 public final class SrcTag: TagRenderer {
@@ -19,6 +20,7 @@ public final class SrcTag: TagRenderer {
             return .string(src)
         }
     }
+    public init() {}
 }
 
 public final class HtmlTag: TagRenderer {
@@ -29,6 +31,7 @@ public final class HtmlTag: TagRenderer {
             return .string(filteredRaw)
         }
     }
+    public init() {}
 }
 
 public final class ShrugTag: TagRenderer {
@@ -39,6 +42,7 @@ public final class ShrugTag: TagRenderer {
             return .string(raw)
         }
     }
+    public init() {}
 }
 
 
