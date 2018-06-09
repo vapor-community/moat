@@ -53,7 +53,7 @@ dependencies: [
 ]
 ```
 
-#### Add to Leaf tags to your configure.swift
+#### Add Leaf tags to your configure.swift
 ``` swift
     var tags = LeafTagConfig.default()
     tags.use(ProfanityTag(), as: "clean")
@@ -65,9 +65,13 @@ dependencies: [
 ```
 
 
+#### Customization
+The Filter.swift contains a customizable list of filters:`ProtanityFilter`, `XSSFilter`, `SrcFilter`, and `HtmlEncodeFilter`. They each contain an array (`filterArray`) and a dictionary (`filterDict`). Items in the array will be removed when filters, while the dictionary keys will be replaced with it's corresponding value. 
+
 ### Attribution
 - JavaScript event handlers from [Dr. Mario Heiderich](https://twitter.com/0x6D6172696F)
 
 ### More information on XSS (Cross-Site Scripting):  
 - OWASP's [XSS Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) 
 - SecLists:  [OWASP Project Page](https://www.owasp.org/index.php/Projects/OWASP_SecLists_Project) and [GitHub](https://github.com/danielmiessler/SecLists) 
+- VaporSecurity: [XSS](https://github.com/cakinney/VaporSecurity/blob/master/articles/001-VaporSecurity-XSS.md)
